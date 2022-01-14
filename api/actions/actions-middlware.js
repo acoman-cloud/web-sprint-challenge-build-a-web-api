@@ -20,12 +20,12 @@ async function validateActionId (req, res, next) {
 }
 
 async function validateActionBody (req, res, next) {
-	const {project_id, description, notes} = req.body 
+	const {project_id, description, notes, completed} = req.body 
 	try{
 		if(!project_id || !description || !notes) {
 			res.status(400).json({message: 'missing fields'})
 		} else {
-			req.update = {project_id, description, notes}
+			req.update = {project_id, description, notes, completed}
 			next()
 		}
 	} catch (err) {
